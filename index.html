@@ -6,10 +6,21 @@
         <title>A-Frame</title>
         <!-- <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script> -->
         <script src="lib/aframe.min.js"></script>
+        <script src="cursor-defuse.js"></script>
     </head>
     <body>
         <a-scene>
-            <a-plane rotation="-90 0 0" width="4" height="4" color="#0091ea"></a-plane>
+            <a-camera>
+                <a-entity geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03; thetaLength: 0"
+                    position="0 0 -1" material="color: black; opacity: 0.5; shader: flat"
+                    cursor="fuse: true; fuseTimeout: 900" raycaster="far: 64; objects: .clickable" cursor-defuse>
+                    <a-entity geometry="primitive: circle; radius: 0.01" position="0 0 0"
+                        material="color: black; opacity: 0.5; shader: flat"></a-entity>
+                    <a-animation begin="cursor-fusing" easing="ease-out-sine" attribute="geometry.thetaLength"
+                        fill="backwards" from="0" to="360" dur="900"></a-animation>
+                </a-entity>
+            </a-camera>
+            <a-plane rotation="-90 0 0" width="4" height="4" color="#0091ea" class="clickable"></a-plane>
             <a-light type="point" color="#fff" intensity="1" position="0 4 0"></a-light>
         </a-scene>
     </body>
