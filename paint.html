@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset=utf8>
+        <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>Paint</title>
+        <script src="paint.js"></script>
+    </head>
+    <body>
+        <canvas height=1024 width=1024 style="height: 512px; width: 512px"></canvas>
+        <script>
+            const canvas = document.getElementsByTagName('canvas')[0]
+            wall(canvas.getContext('2d'))
+        </script>
+    </body>
+</html>
